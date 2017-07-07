@@ -22,10 +22,12 @@ def get_bing_img(url):
     imgName = datetime.datetime.today().strftime('%Y-%m-%d') + '.jpg'
     imgPath = os.path.join(path, imgName)
     for img in os.listdir(path):
-        if img.is_file() and img.name != imgName:
+        if img != imgName:
             filename = os.path.join(path, img.name)
             os.remove(filename)
     urlretrieve(url + img_link[:-1], imgPath)
+    os.system('gsettings set org.gnome.desktop.background \
+        picture-uri "file:{}"'.format(imgPath))
 
 
 if __name__ == "__main__":
