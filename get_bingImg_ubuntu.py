@@ -23,7 +23,7 @@ def get_bing_img(url):
     imgPath = os.path.join(path, imgName)
     for img in os.listdir(path):
         if img != imgName:
-            filename = os.path.join(path, img.name)
+            filename = os.path.join(path, img)
             os.remove(filename)
     urlretrieve(url + img_link[:-1], imgPath)
     os.system('gsettings set org.gnome.desktop.background \
